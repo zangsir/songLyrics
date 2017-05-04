@@ -85,7 +85,23 @@ def get_google_w2v_dist(sent1,sent2,model,nlp):
     v2 = np.nan_to_num(v2)
     return cosine(v1,v2)
 
-def extract_features(passage,LM,w2v_model,d2v_model,google_model,label,nlp):
+
+
+def feature_extractor(current,prev,LM,w2v_model,d2v_model,google_model,label,nlp):
+    loglik_norm=get_loglik_norm(current,LM)#LM='train3.lm'
+    d2v_dist=get_d2v_dist(prev,current,d2v_model)
+    w2v_dist=get_w2v_dist(prev,current,w2v_model,nlp)
+    #d2v_dist=w2v_dist
+    google_w2v_dist=get_google_w2v_dist(prev,current,google_model,nlp)
+    #google_w2v_dist=w2v_dist
+    rhyme_prev=is_rhyme(prev.split(' ')[-1],current.split(' ')[-1])
+    rhyme_current=is_rhyme_current(current)
+    num_words_cur=np.log(len(current))
+    num_words_prev=np.log(len(prev))
+    label=label
+    return np.array([loglik_norm,d2v_dist,w2v_dist,google_w2v_dist,rhyme_prev,rhyme_current,num_words_prev,num_words_cur,label],dtype='float32')
+
+def extract_features_pos(passage,LM,w2v_model,d2v_model,google_model,label,nlp):
     """extract feature from one passage"""
     # a passage is a consecutive set of lines without a blank line in between. we extract features with these pairs 
     # of lines as prev and next lines. they're a more coherent unit. The passages is obtained by methods above, 
@@ -105,18 +121,8 @@ def extract_features(passage,LM,w2v_model,d2v_model,google_model,label,nlp):
         #print('prev,current:')
         #print(prev,current)
         #features
-        loglik_norm=get_loglik_norm(current,LM)#LM='train3.lm'
-        d2v_dist=get_d2v_dist(prev,current,d2v_model)
-        w2v_dist=get_w2v_dist(prev,current,w2v_model,nlp)
-        #d2v_dist=w2v_dist
-        google_w2v_dist=get_google_w2v_dist(prev,current,google_model,nlp)
-        #google_w2v_dist=w2v_dist
-        rhyme_prev=is_rhyme(prev.split(' ')[-1],current.split(' ')[-1])
-        rhyme_current=is_rhyme_current(current)
-        num_words_cur=len(current)
-        num_words_prev=len(prev)
-        label=label
-        pos_feature_vec.append([loglik_norm,d2v_dist,w2v_dist,google_w2v_dist,rhyme_prev,rhyme_current,num_words_prev,num_words_cur,label])
+        features=feature_extractor(current,prev,LM,w2v_model,d2v_model,google_model,label,nlp)
+        pos_feature_vec.append(features)
     return np.array(pos_feature_vec)
         
         
