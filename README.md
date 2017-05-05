@@ -50,6 +50,7 @@ Making me
 
 Chorus:
 
+
 Poisonous lookalike
 
 Voodoo, voodoo
@@ -59,3 +60,31 @@ O girlfriend
 I've Lord
 
 Radicals
+=======================
+=============
+Verses:
+
+All these little victories, yeah
+
+Be my woman, yeah.
+
+I like to Oh yeah
+
+Oh yeah,
+
+Let me go
+
+Oh no
+
+
+Chorus:
+
+Sad song, sad song
+
+Don't know where I belong
+
+Do-be-da, do-be-da
+
+Like a no remorse.
+
+There's no return
