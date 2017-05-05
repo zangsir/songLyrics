@@ -28,3 +28,66 @@ where N is the number of songs you want to generate lyrics, and mode=1 for Slow 
 You will find the resulting lyrics in <code>lyrics_gen.txt</code>. 
 
 Note that loading the Google News vector (3.5G) can take more than 1 minute in the beginning, and in the slow mode, it can take up to 3 minutes to generate one song. (please refer to the paper for explanations)
+
+
+## Example output
+(1)
+
+Verses:
+
+pain disappear, i'll do anything.
+
+I have everything
+
+I feel you near
+
+You look at me
+
+We're gonna save me?
+
+Why can't you see?
+
+Making me 
+
+
+Chorus:
+
+
+Poisonous lookalike
+
+Voodoo, voodoo
+
+O girlfriend
+
+I've Lord
+
+Radicals
+
+(2)
+
+Verses:
+
+All these little victories, yeah
+
+Be my woman, yeah.
+
+I like to Oh yeah
+
+Oh yeah,
+
+Let me go
+
+Oh no
+
+
+Chorus:
+
+Sad song, sad song
+
+Don't know where I belong
+
+Do-be-da, do-be-da
+
+Like a no remorse.
+
+There's no return
