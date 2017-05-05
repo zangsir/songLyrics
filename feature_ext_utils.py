@@ -5,7 +5,6 @@ from scipy.spatial.distance import cosine
 from gensim.models import Doc2Vec
 from gensim.models import Word2Vec
 import pronouncing
-
 import spacy
 
 
@@ -86,6 +85,11 @@ def get_google_w2v_dist(sent1,sent2,model,nlp):
     return cosine(v1,v2)
 
 
+def get_google_w2v_dist_new(sent1,sent2,vecs,nlp):
+    v1=vecs.get(sent1, errors=False)
+    v2=vecs.get(sent2, errors=False)
+    return vecs.distance(v1,v2)
+
 
 def feature_extractor(current,prev,LM,w2v_model,d2v_model,google_model,label,nlp):
     loglik_norm=get_loglik_norm(current,LM)#LM='train3.lm'
@@ -100,6 +104,9 @@ def feature_extractor(current,prev,LM,w2v_model,d2v_model,google_model,label,nlp
     num_words_prev=np.log(len(prev))
     label=label
     return np.array([loglik_norm,d2v_dist,w2v_dist,google_w2v_dist,rhyme_prev,rhyme_current,num_words_prev,num_words_cur,label],dtype='float32')
+
+
+
 
 def extract_features_pos(passage,LM,w2v_model,d2v_model,google_model,label,nlp):
     """extract feature from one passage"""

@@ -1,5 +1,6 @@
 from feature_ext_utils import *
 import sys
+from vectors.vectors import Vectors
 
 def unit_test(test_pas,LM,w2v_model,d2v_model,google_model,pos_label,nlp):
     features = extract_features_pos(test_pas,LM,w2v_model,d2v_model,google_model,pos_label,nlp)
@@ -59,9 +60,9 @@ def extract_positive_features(data_file,LM,w2v_model,d2v_model,google_model,pos_
 
 def main():
     test_run=bool(int(sys.argv[1]))
-    d2v_model=Doc2Vec.load('rock_train.d2v')
-    w2v_model=Word2Vec.load('rock_train.w2v')
-    LM=kenlm.LanguageModel('train3.lm')
+    d2v_model=Doc2Vec.load('model/rock_train.d2v')
+    w2v_model=Word2Vec.load('model/rock_train.w2v')
+    LM=kenlm.LanguageModel('model/train3.lm')
     
     
     pos_label=1
@@ -75,6 +76,8 @@ def main():
         sys.exit()
     else:
         google_model=gensim.models.KeyedVectors.load_word2vec_format('model/GoogleNews-vectors-negative300.bin', binary=True)  
+        #google_model = Vectors("vectors/GoogleNewsVecs.txt")
+
     print('loading model finished...')
     #print('-----------------')
     #test(w2v_model,d2v_model,google_model,neg_label)

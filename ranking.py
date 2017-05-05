@@ -60,8 +60,8 @@ def train_classifier(data,label):
     #np.save('test_data.npy',X_test)
     #np.save('test_label.npy',y_test)
     X_train,y_train=data,label
-    X_test=np.load('test_data.npy')
-    y_test=np.load('test_label.npy')
+    X_test=np.load('npy/test_data.npy')
+    y_test=np.load('npy/test_label.npy')
     features=['loglik_norm','d2v_dist','w2v_dist','google_dist','rhyme_prev','rhyme_current','len_prev','len_cur']
     abalation=0
     if abalation:
@@ -83,7 +83,7 @@ def train_classifier(data,label):
 def main():
     build=True
     if build:
-        all_data=build_data(2000)
+        all_data=build_data(20000)
     else:
         all_data=np.load('alldata_cnon.npy')
     print('data size:')

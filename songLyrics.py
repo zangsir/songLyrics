@@ -17,7 +17,7 @@ def select_best_loglik(generated_sents,model):
     return sorted_sents[-1]
 
 def gen_candidates(num_cand):
-    command = 'ngram/ngram -lm train3.lm -gen %s'%num_cand
+    command = './ngram -lm model/train3.lm -gen %s'%num_cand
     #print(command)
     lines = subprocess.getoutput(command)
     #print(lines)
@@ -42,7 +42,7 @@ def gen_line(prev,num_cand,clf,LM,w2v_model,d2v_model,google_model,nlp,online=Fa
         #print('generating online..')
         candidates=gen_candidates(num_cand)
     else:
-        candidates=sample_pregen_candidates(num_cand,'better_sents.txt')#faster than generating online using SRILM, also filtered out lower half of loglik sents
+        candidates=sample_pregen_candidates(num_cand,'txt/better_sents.txt')#faster than generating online using SRILM, also filtered out lower half of loglik sents
     #given prev line, classify all candidates as appropriate next line or not, then use probability to select best
     #print('feature extraction...')
     features=['loglik_norm','d2v_dist','w2v_dist','google_dist','rhyme_prev','rhyme_current','len_prev','len_cur']
@@ -101,12 +101,13 @@ def main():
     start=time.time()
     num_songs=sys.argv[1]
     online=int(sys.argv[2])
-    d2v_model=Doc2Vec.load('rock_train.d2v')
-    w2v_model=Word2Vec.load('rock_train.w2v')
-    LM=kenlm.LanguageModel('train3.lm')
+    d2v_model=Doc2Vec.load('model/rock_train.d2v')
+    w2v_model=Word2Vec.load('model/rock_train.w2v')
+    LM=kenlm.LanguageModel('model/train3.lm')
     nlp=spacy.load('en')
     google_model=gensim.models.KeyedVectors.load_word2vec_format('model/GoogleNews-vectors-negative300.bin', binary=True)
-    clf=joblib.load('svm_clf.pkl')
+    #google_model = Vectors("vectors/GoogleNewsVecs.txt")
+    clf=joblib.load('model/svm_clf.pkl')
     num_verse=random.randint(5,11)
     num_chorus=4
     num_cand=150

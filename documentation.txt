@@ -1,0 +1,9 @@
+#build positive training data
+python ext_feat_sel.py 0
+
+#build positive training data
+python ext_feat_neg.py 0 #with corpus data
+python ext_feat_neg.py 0 #with gibberish data
+
+#training classifier
+python ranking.py
