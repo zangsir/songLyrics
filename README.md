@@ -25,4 +25,6 @@ where N is the number of songs you want to generate lyrics, and mode=1 for Slow 
 
 <code>python songLyrics.py 5 0 </code>
 
+You will find the resulting lyrics in <code>lyrics_gen.txt</code>. 
+
 Note that loading the Google News vector (3.5G) can take more than 1 minute in the beginning, and in the slow mode, it can take up to 3 minutes to generate one song. (please refer to the paper for explanations)
