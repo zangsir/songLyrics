@@ -1,8 +1,8 @@
-from feature_ext_utils import *
+from modules.feature_ext_utils import *
 import subprocess,sys
 from sklearn.externals import joblib
 import random,spacy
-from ranking import clean_nan_inf
+from modules.ranking import clean_nan_inf
 import time
 
 # first we use ngram LM to generate K lines. 
