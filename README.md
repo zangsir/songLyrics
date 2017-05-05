@@ -4,6 +4,8 @@ automatic song lyrics generator
 
 This system is currently trained to generate lyrics using a corpus of Rock song lyrics. For comprehensive documentation see this accompanying short paper: http://zangsir.weebly.com/uploads/3/1/3/8/3138983/ranklyrics.pdf
 
+Two examples are included below, more examples: https://github.com/zangsir/songLyrics/blob/master/txt/samples.txt
+
 ## Dependency
 The system runs on Python 3. It depends on a number of libraries and models:
 
