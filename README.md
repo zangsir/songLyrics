@@ -31,6 +31,8 @@ Note that loading the Google News vector (3.5G) can take more than 1 minute in t
 
 
 ## Example output
+(1)
+
 Verses:
 
 pain disappear, i'll do anything.
@@ -60,8 +62,9 @@ O girlfriend
 I've Lord
 
 Radicals
-=======================
-=============
+
+(2)
+
 Verses:
 
 All these little victories, yeah
