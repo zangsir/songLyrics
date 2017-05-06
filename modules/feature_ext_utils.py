@@ -1,11 +1,7 @@
 import kenlm,re
-import gensim,os
 import numpy as np
 from scipy.spatial.distance import cosine
-from gensim.models import Doc2Vec
-from gensim.models import Word2Vec
 import pronouncing
-import spacy
 
 
 
@@ -92,7 +88,7 @@ def get_google_w2v_dist_new(sent1,sent2,vecs,nlp):
 
 
 def feature_extractor(current,prev,LM,w2v_model,d2v_model,google_model,label,nlp):
-    loglik_norm=get_loglik_norm(current,LM)#LM='train3.lm'
+    loglik_norm=get_loglik_norm(current,LM)
     d2v_dist=get_d2v_dist(prev,current,d2v_model)
     w2v_dist=get_w2v_dist(prev,current,w2v_model,nlp)
     #d2v_dist=w2v_dist
@@ -115,9 +111,7 @@ def extract_features_pos(passage,LM,w2v_model,d2v_model,google_model,label,nlp):
     # namely, splitting the training file by '\n\n'
     line_list=passage.split('\n')
     line_list=[i for i in line_list if i!='']
-    #print (line_list)
     if len(line_list)<=1:
-        #print('len is 1')
         return []
     features=['loglik_norm','d2v_dist','w2v_dist','rhyme_prev','rhyme_current','len_prev','len_cur','label']
     pos_feature_vec=[]
@@ -125,9 +119,6 @@ def extract_features_pos(passage,LM,w2v_model,d2v_model,google_model,label,nlp):
         #extract features from the current and prev line
         prev=line_list[i-1]
         current=line_list[i]
-        #print('prev,current:')
-        #print(prev,current)
-        #features
         features=feature_extractor(current,prev,LM,w2v_model,d2v_model,google_model,label,nlp)
         pos_feature_vec.append(features)
     return np.array(pos_feature_vec)
