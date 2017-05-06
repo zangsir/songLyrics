@@ -15,8 +15,8 @@ The system runs on Python 3. It depends on a number of libraries and models:
 - spaCy (https://spacy.io/)
 - word2vec Google News vectors (https://github.com/mmihaltz/word2vec-GoogleNews-vectors), should be placed under the model/ directory
 
-
 ## Usage
+### Commandline Usage
 There are two modes: a Fast and a Slow mode (refer to the paper linked above), with a tradeoff between speed and interestingness of lyrics. The slow mode often generates more interesting lyrics with more variations in structure.But it is 8x slower than Fast mode.
 
 To generate lyrics, simply do:
@@ -29,7 +29,18 @@ where N is the number of songs you want to generate lyrics, and mode=1 for Slow 
 
 You will find the resulting lyrics in <code>lyrics_gen.txt</code>. 
 
+### Python programming usage
+```python
+from modules.lyrics_classes import SongLyrics
+lyrics = SongLyrics()
+verses = lyrics.gen_verses(num_of_lines)
+```
+
+where num_of_lines is the desired integer number of lyrics lines you want to generate. 
+
 Note that loading the Google News vector (3.5G) can take more than 1 minute in the beginning, and in the slow mode, it can take up to 3 minutes to generate one song. (please refer to the paper for explanations)
+
+
 
 
 ## Example output (more: songLyrics/txt/samples.txt)
