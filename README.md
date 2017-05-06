@@ -33,7 +33,7 @@ You will find the resulting lyrics in <code>lyrics_gen.txt</code>.
 ```python
 from modules.lyrics_classes import SongLyrics
 lyrics = SongLyrics()
-<code>verses = lyrics.gen_verses(num_of_lines)
+verses = lyrics.gen_verses(num_of_lines)
 ```
 
 where num_of_lines is the desired integer number of lyrics lines you want to generate. 
