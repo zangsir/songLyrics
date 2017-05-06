@@ -31,6 +31,7 @@ You will find the resulting lyrics in <code>lyrics_gen.txt</code>.
 
 ### Python programming usage
 ```python
+#this import might take a minute due to loading the GoogleNewsVector model(3.6G)
 from modules.lyrics_classes import SongLyrics
 lyrics = SongLyrics()
 verses = lyrics.gen_verses(num_of_lines)
