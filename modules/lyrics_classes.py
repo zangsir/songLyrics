@@ -27,7 +27,7 @@ class SongLyrics:
         return sorted_sents[-1]
 
     def gen_candidates(self):
-        command = './ngram -lm model/train3.lm -gen %s' % self.num_cand
+        command = 'model/ngram -lm model/train3.lm -gen %s' % self.num_cand
         lines = subprocess.getoutput(command)
         lines = lines.split('\n')
         lines = [i for i in lines if i != '']
@@ -64,7 +64,7 @@ class SongLyrics:
         first_line = self.gen_first_line()
         all_lines.append(first_line)
         prev_line = first_line
-        for i in range(num_verse):
+        for i in range(num_verse-1):
             new_line = self.gen_line(prev_line)
             if nodup and (new_line in all_lines):
                 continue
