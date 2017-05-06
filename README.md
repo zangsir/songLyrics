@@ -40,9 +40,6 @@ verses = lyrics.gen_verses(num_of_lines)
 
 where num_of_lines is the desired integer number of lyrics lines you want to generate. 
 
-Note that loading the Google News vector (3.5G) can take more than 1 minute in the beginning, and in the slow mode, it can take up to 3 minutes to generate one song. (please refer to the paper for explanations)
-
-
 
 
 ## Example output (more: songLyrics/txt/samples.txt)
