@@ -19,7 +19,7 @@ The system runs on Python 3. It depends on a number of libraries and models:
 
 ## Usage
 ### Commandline Usage
-There are two modes: a Fast and a Slow mode (refer to the paper linked above), with a tradeoff between speed and interestingness of lyrics. The slow mode often generates more interesting lyrics with more variations in structure.But it is 8x slower than Fast mode.
+There are two modes: a Fast and a Slow mode (refer to the paper linked above), with a tradeoff between speed and interestingness of lyrics. The slow mode often generates more interesting lyrics with more variations in structure.
 
 To generate lyrics, simply do:
 
